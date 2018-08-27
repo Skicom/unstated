@@ -18,8 +18,8 @@ yarn add unstated
 
 ```js
 // @flow
-import React from 'react';
-import { render } from 'react-dom';
+import { Component } from 'inferno';
+import { render } from 'inferno';
 import { Provider, Subscribe, Container } from 'unstated';
 
 type CounterState = {
@@ -81,13 +81,13 @@ For more examples, see the `example/` directory.
 ## Guide
 
 If you're like me, you're sick of all the ceremony around state management in
-React. Something that fits in well with the React way of thinking, but doesn't
+Inferno. Something that fits in well with the Inferno way of thinking, but doesn't
 command some crazy architecture and methodology.
 
 Component state is nice! It makes sense and people pick it up quickly:
 
 ```js
-class Counter extends React.Component {
+class Counter extends Component {
   state = { count: 0 };
   increment = () => {
     this.setState({ count: this.state.count + 1 });
@@ -107,25 +107,25 @@ class Counter extends React.Component {
 }
 ```
 
-As a new React developer you might not know exactly how everything works, but
+As a new Inferno developer you might not know exactly how everything works, but
 you can get a general sense pretty quickly.
 
 The only problem here is that we can't easily share this state with other
-components in our tree. Which is intentional! React components are designed to
+components in our tree. Which is intentional! Inferno components are designed to
 be very self-contained.
 
-What would be great is if we could replicate the nice parts of React's
+What would be great is if we could replicate the nice parts of Inferno's
 component state API while sharing it across multiple components.
 
-But how do we share values between components in React? Through "context".
+But how do we share values between components in Inferno? Through "context".
 
 > **Note:** The following is part of the new `React.createContext` API
 > [described in this RFC](https://github.com/reactjs/rfcs/blob/master/text/0002-new-version-of-context.md).
 
 ```js
-const Amount = React.createContext(1);
+const Amount = createContext(1);
 
-class Counter extends React.Component {
+class Counter extends Component {
   state = { count: 0 };
   increment = amount => { this.setState({ count: this.state.count + amount }); };
   decrement = amount => { this.setState({ count: this.state.count - amount }); };
@@ -144,7 +144,7 @@ class Counter extends React.Component {
   }
 }
 
-class AmountAdjuster extends React.Component {
+class AmountAdjuster extends Component {
   state = { amount: 0 };
   handleChange = event => {
     this.setState({
@@ -170,7 +170,7 @@ render(
 );
 ```
 
-This is already pretty great. Once you get a little bit used to React's way of
+This is already pretty great. Once you get a little bit used to Inferno's way of
 thinking, it makes total sense and it's very predictable.
 
 But can we build on this pattern to make something even nicer?
@@ -179,7 +179,7 @@ But can we build on this pattern to make something even nicer?
 
 Well this is where Unstated comes in.
 
-Unstated is designed to build on top of the patterns already set out by React
+Unstated is designed to build on top of the patterns already set out by Inferno
 components and context.
 
 It has three pieces:
@@ -190,7 +190,7 @@ We're going to want another place to store our state and some of the logic for
 updating it.
 
 `Container` is a very simple class which is meant to look just like
-`React.Component` but with only the state-related bits: `this.state` and
+`Component` but with only the state-related bits: `this.state` and
 `this.setState`.
 
 ```js
@@ -212,7 +212,7 @@ won't re-render.
 
 ###### `setState()`
 
-`setState()` in `Container` mimics React's `setState()` method as closely as
+`setState()` in `Container` mimics Inferno's `setState()` method as closely as
 possible.
 
 ```js
@@ -231,7 +231,7 @@ class CounterContainer extends Container {
 }
 ```
 
-It's also run asynchronously, so you need to follow the same rules as React.
+It's also run asynchronously, so you need to follow the same rules as Inferno.
 
 **Don't read state immediately after setting it**
 
@@ -258,7 +258,7 @@ class CounterContainer extends Container {
 }
 ```
 
-However, unlike React's `setState()` Unstated's `setState()` returns a promise,
+However, unlike Inferno's `setState()` Unstated's `setState()` returns a promise,
 so you can `await` it like this:
 
 ```js
@@ -279,9 +279,9 @@ something that works in every browser.
 
 Next we'll need a piece to introduce our state back into the tree so that:
 
-* When state changes, our components re-render.
-* We can depend on our container's state.
-* We can call methods on our container.
+- When state changes, our components re-render.
+- We can depend on our container's state.
+- We can call methods on our container.
 
 For this we have the `<Subscribe>` component which allows us to pass our
 container classes/instances and receive instances of them in the tree.
@@ -401,7 +401,7 @@ throw everything out afterwards.
 
 #### What state should I put into Unstated?
 
-The React community has focused a lot on trying to put all their state in one
+The Inferno community has focused a lot on trying to put all their state in one
 place. You could keep doing that with Unstated, but I wouldn't recommend it.
 
 I would recommend a multi-part solution.
@@ -431,7 +431,7 @@ components in the tree.
 </Tabs>
 ```
 
-For this, I recommend using React's built-in `React.createContext()` API
+For this, I recommend using React's built-in `createContext()` API
 and being careful in designing the API for the base components you create.
 
 > **Note:** If you're on an old version of React and want to use the new
@@ -483,7 +483,7 @@ good stuff).
 #### How can I pass in options to my container?
 
 A good pattern for doing this might be to add a constructor to your container
-which accepts `props` sorta like React components. Then create your own
+which accepts `props` sorta like Inferno components. Then create your own
 instance of your container and pass it into `<Provide inject>`.
 
 ```js

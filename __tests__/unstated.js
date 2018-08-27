@@ -1,10 +1,10 @@
 // @flow
-import React from 'react';
-import renderer from 'react-test-renderer';
+import Inferno from 'inferno';
 import { Provider, Subscribe, Container } from '../src/unstated';
 
 function render(element) {
-  return renderer.create(element).toJSON();
+  throw new Error('inferno uses enzyme instead');
+  //return renderer.create(element).toJSON();
 }
 
 class CounterContainer extends Container<{ count: number }> {

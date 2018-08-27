@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as Inferno from 'inferno';
 import { Provider, Subscribe, Container } from '../src/unstated';
 
 class CounterContainer extends Container<{ count: number }> {

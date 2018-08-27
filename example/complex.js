@@ -1,6 +1,6 @@
 // @flow
-import React from 'react';
-import { render } from 'react-dom';
+import Inferno from 'inferno';
+import { render } from 'inferno';
 import { Provider, Subscribe, Container } from '../src/unstated';
 
 type AppState = {

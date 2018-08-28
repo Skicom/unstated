@@ -1,4 +1,4 @@
-import { render, VNode } from 'inferno';
+import { render, VNode, InfernoChildren } from 'inferno';
 import { createElement } from 'inferno-create-element';
 import { Provider, Subscribe, Container } from '../src/unstated';
 

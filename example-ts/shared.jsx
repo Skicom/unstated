@@ -35,6 +35,15 @@ function Counter() {
         <button onClick={function () { return sharedCounterContainer.increment(); }}>+</button>
       </div>); });
 }
+function CounterLong() {
+    return (<Subscribe to={stores}>
+      {function (counter) { return (<div>
+          <button onClick={function () { return counter.decrement(); }}>-</button>
+          <span>{counter.state.count}</span>
+          <button onClick={function () { return sharedCounterContainer.increment(); }}>+</button>
+        </div>); }}
+    </Subscribe>);
+}
 render(<Provider>
     <Counter />
   </Provider>, document.getElementById('shared'));

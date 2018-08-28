@@ -20,6 +20,7 @@
     "prepublish": "yarn clean && yarn build",
     "precommit": "lint-staged",
     "example": "parcel example/index.html",
+    "example-ts": "tsc -p tsconfig.example.json && parcel example-ts/index.html",
     "typescript": "tsc -p tsconfig.json"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "inferno-server": "5.x"
   },
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.0.0-rc.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-plugin-inferno": "^5.1.0",

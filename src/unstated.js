@@ -1,5 +1,5 @@
 // @flow
-import { Component, type Node } from 'inferno';
+import { Component, InfernoChildren } from 'inferno';
 import createInfernoContext from 'create-inferno-context';
 
 type Listener = () => mixed;
@@ -61,7 +61,7 @@ export type SubscribeProps<Containers: ContainersType> = {
   to: Containers,
   children: (
     ...instances: $TupleMap<Containers, <C>(Class<C> | C) => C>
-  ) => Node
+  ) => Object
 };
 
 type SubscribeState = {};
@@ -153,7 +153,7 @@ export class Subscribe<Containers: ContainersType> extends Component<
 
 export type ProviderProps = {
   inject?: Array<ContainerType>,
-  children: Node
+  children: InfernoChildren
 };
 
 export function Provider(props: ProviderProps) {

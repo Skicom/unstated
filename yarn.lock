@@ -10,6 +10,23 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@babel/helper-plugin-utils@^7.0.0-rc.4":
+  version "7.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-rc.4.tgz#75fc55485d62174787cb5edc8fad1fc375b7c48f"
+
+"@babel/plugin-syntax-typescript@^7.0.0-rc.4":
+  version "7.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-rc.4.tgz#763f0c3ba6d978f3437e6a7bd560671706cde3ac"
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0-rc.4"
+
+"@babel/plugin-transform-typescript@^7.0.0-rc.4":
+  version "7.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.0.0-rc.4.tgz#41fd4ca88a6c7abddccd950412ecf1d5aa186ffa"
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0-rc.4"
+    "@babel/plugin-syntax-typescript" "^7.0.0-rc.4"
+
 "@types/node@*":
   version "10.9.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.9.2.tgz#f0ab8dced5cd6c56b26765e1c0d9e4fdcc9f2a00"

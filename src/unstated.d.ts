@@ -18,14 +18,14 @@ export interface ContainerType<State extends object> {
 
 interface SubscribeProps {
   to: (ContainerType<any> | Container<any>)[];
-  children(...instances: Container<any>[]): Inferno.VNode;
+  children(...instances: Container<any>[]): any;
 }
 
-export class Subscribe extends Inferno.Component<SubscribeProps> {}
+export class Subscribe extends Inferno.Component<SubscribeProps, any> {}
 
 export interface ProviderProps {
   inject?: Container<any>[];
-  children: Inferno.VNode;
+  children: Inferno.InfernoChildren;
 }
 
 export const Provider: Inferno.SFC<ProviderProps>;

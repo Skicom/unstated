@@ -1,6 +1,5 @@
 // @flow
-import Inferno from 'inferno';
-import { Provider, Subscribe, Container } from '../src/unstated';
+import { Subscribe, Container } from '../src/unstated';
 
 function render(element) {
   throw new Error('inferno uses enzyme instead');

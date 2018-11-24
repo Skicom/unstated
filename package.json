@@ -1,6 +1,6 @@
 {
   "name": "unstated",
-  "version": "2.1.1",
+  "version": "2.1.10",
   "description": "State so simple, it goes without saying",
   "main": "lib/unstated.js",
   "module": "lib/unstated.es.js",
@@ -12,25 +12,31 @@
     "lib"
   ],
   "scripts": {
+    "buildnode": "parcel build src/unstated.js -d dist/node --target node --no-cache",
+    "buildbrowser": "parcel build src/unstated.js -d dist/browser --no-cache",
+    "build": "npm run buildnode && npm run buildbrowser",
     "clean": "rm -rf lib",
-    "build": "rollup -c && flow-copy-source src lib && cp src/unstated.d.ts lib/unstated.d.ts",
+    "buildold": "rollup -c && flow-copy-source src lib && cp src/unstated.d.ts lib/unstated.d.ts",
     "typecheck": "flow",
     "test": "jest",
     "format": "prettier --write **/*.{js,json,md}",
-    "prepublish": "yarn clean && yarn build",
     "precommit": "lint-staged",
     "example": "parcel example/index.html",
     "example-ts": "tsc -p tsconfig.example.json && parcel example-ts/index.html",
-    "typescript": "tsc -p tsconfig.json"
+    "typescript": "tsc -p tsconfig.json",
+    "push": "npm publish --registry http://10.0.0.105:4873/",
+    "all": "npm run build && npm run push"
   },
   "dependencies": {
     "babel-plugin-add-module-exports": "^0.2.1",
-    "create-inferno-context": "https://github.com/Skicom/create-inferno-context/tarball/master",
+    "create-inferno-context": "^0.2.7",
     "enzyme": "^3.1.0",
-    "inferno": "^5.4.2",
-    "inferno-server": "5.x"
+    "inferno": "^6.2.1",
+    "inferno-server": "^6.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-transform-typescript": "^7.0.0-rc.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

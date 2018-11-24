@@ -1,1 +1,17 @@
-{ "presets": ["./.babelrc.js"] }
+{
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "latests",
+					"browsers": ["last 2 versions", ">1%"]
+				}
+			}
+		]
+	],
+	"plugins": [
+		["babel-plugin-inferno", { "imports": true }],
+		"@babel/plugin-proposal-class-properties"
+	]
+}

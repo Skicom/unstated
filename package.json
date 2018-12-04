@@ -1,6 +1,6 @@
 {
   "name": "unstated",
-  "version": "2.1.14",
+  "version": "2.1.15",
   "description": "State so simple, it goes without saying",
   "main": "lib/unstated.js",
   "module": "lib/unstated.es.js",
@@ -28,8 +28,8 @@
     "build": "^0.1.4",
     "create-inferno-context": "https://github.com/Skicom/create-inferno-context/tarball/master",
     "enzyme": "^3.1.0",
-    "inferno": "^5.4.2",
-    "inferno-server": "5.x"
+    "inferno": "^6.3.1",
+    "inferno-server": "6.x"
   },
   "devDependencies": {
     "@babel/plugin-transform-typescript": "^7.0.0-rc.4",

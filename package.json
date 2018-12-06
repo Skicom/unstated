@@ -1,6 +1,6 @@
 {
   "name": "unstated",
-  "version": "2.1.15",
+  "version": "2.1.21",
   "description": "State so simple, it goes without saying",
   "main": "lib/unstated.js",
   "module": "lib/unstated.es.js",
@@ -8,12 +8,9 @@
   "repository": "https://github.com/thejameskyle/unstated",
   "author": "James Kyle <me@thejameskyle.com>",
   "license": "SEE LICENSE IN LICENSE",
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "clean": "rm -rf lib",
-    "build": "rollup -c && flow-copy-source src lib && cp src/unstated.d.ts lib/unstated.d.ts",
+    "build": "npx rollup -c && npx flow-copy-source src lib && cp src/unstated.d.ts lib/unstated.d.ts",
     "typecheck": "flow",
     "test": "jest",
     "format": "prettier --write **/*.{js,json,md}",
@@ -21,18 +18,20 @@
     "example": "parcel example/index.html",
     "example-ts": "tsc -p tsconfig.example.json && parcel example-ts/index.html",
     "typescript": "tsc -p tsconfig.json",
-    "push": "npm publish --registry http://10.0.0.105:4873/"
+    "push": "npm publish --registry http://10.0.0.105:4873/",
+    "all": "npm run build && npm run push"
   },
   "dependencies": {
+    "create-inferno-context": "^0.2.11"
+  },
+  "peerDependencies": {
     "babel-plugin-add-module-exports": "^0.2.1",
     "build": "^0.1.4",
-    "create-inferno-context": "https://github.com/Skicom/create-inferno-context/tarball/master",
     "enzyme": "^3.1.0",
     "inferno": "^6.3.1",
     "inferno-server": "6.x"
   },
   "devDependencies": {
-    "@babel/plugin-transform-typescript": "^7.0.0-rc.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-plugin-inferno": "^5.1.0",
@@ -52,6 +51,8 @@
     "prop-types": "^15.6.0",
     "rollup": "^0.55.5",
     "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^8.1.4",
+    "rollup-plugin-node-resolve": "^3.4.0",
     "typescript": "^2.9.2"
   },
   "lint-staged": {
